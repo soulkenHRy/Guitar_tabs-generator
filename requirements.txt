@@ -1,5 +1,0 @@
-# Vercel serverless API dependencies
-# The API functions use only Python stdlib - no external packages needed.
-#
-# For the desktop GUI application (guitar_detector_gui.py), install:
-#   pip install -r requirements-desktop.txt
