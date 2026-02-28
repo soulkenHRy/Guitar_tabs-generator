@@ -3,400 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fun Guitar - AI Guitar Detection & Tab Generator</title>
+    <title>Guitar Detection System</title>
     <link rel="stylesheet" href="/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎸</text></svg>">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-brand">
-            <span class="logo">🎸</span>
-            <span class="brand-text">Fun Guitar</span>
+    <!-- Main Window Frame -->
+    <div class="window">
+        <!-- Title Bar -->
+        <div class="titlebar">
+            <span class="titlebar-text">Guitar Detection System</span>
+            <div class="titlebar-buttons">
+                <span class="titlebar-btn minimize"></span>
+                <span class="titlebar-btn maximize"></span>
+                <span class="titlebar-btn close"></span>
+            </div>
         </div>
-        <div class="nav-links">
-            <a href="#features" class="nav-link">Features</a>
-            <a href="#tuner" class="nav-link">Tuner</a>
-            <a href="#demo" class="nav-link">Demo</a>
-            <a href="#tech" class="nav-link">Tech Stack</a>
-            <a href="https://github.com" class="nav-link btn-github" target="_blank" rel="noopener">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                GitHub
-            </a>
-        </div>
-        <button class="nav-toggle" aria-label="Toggle navigation">
-            <span></span><span></span><span></span>
-        </button>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-            <div class="hero-badge">AI-Powered Guitar Analysis</div>
-            <h1>Detect Guitar Notes<br><span class="gradient-text">Generate Tabs Automatically</span></h1>
-            <p class="hero-subtitle">
-                Computer vision meets music — upload a video of guitar playing and get 
-                accurate tablature using YOLOv8 detection, hand tracking, and pitch analysis.
-            </p>
-            <div class="hero-actions">
-                <a href="#tuner" class="btn btn-primary">
-                    <span>🎵</span> Try the Tuner
-                </a>
-                <a href="#demo" class="btn btn-secondary">
-                    <span>▶️</span> See How It Works
-                </a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-value">20</span>
-                    <span class="stat-label">Frets Detected</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value">6</span>
-                    <span class="stat-label">String Support</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value">3</span>
-                    <span class="stat-label">Detection Models</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value">30</span>
-                    <span class="stat-label">FPS Processing</span>
-                </div>
-            </div>
+        <!-- Menu Bar -->
+        <div class="menubar">
+            <span class="menu-item">File</span>
+            <span class="menu-item">View</span>
+            <span class="menu-item">Tools</span>
+            <span class="menu-item">Help</span>
         </div>
-    </section>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <div class="section-header">
-                <h2>How It Works</h2>
-                <p>Three-stage AI pipeline for accurate guitar tablature generation</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🔍</div>
-                    <h3>Guitar Detection</h3>
-                    <p>YOLOv8 model trained to detect guitar neck, frets, and nut with high precision. Handles occlusion and varying angles.</p>
-                    <div class="feature-tag">Computer Vision</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🤚</div>
-                    <h3>Hand Tracking</h3>
-                    <p>MediaPipe-powered hand detection tracks finger positions on the fretboard to determine which frets are being pressed.</p>
-                    <div class="feature-tag">MediaPipe + cvzone</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎵</div>
-                    <h3>Audio Analysis</h3>
-                    <p>FFT-based pitch detection identifies played frequencies. Optional Demucs preprocessing isolates guitar from background.</p>
-                    <div class="feature-tag">Signal Processing</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📋</div>
-                    <h3>Tab Generation</h3>
-                    <p>Combines visual and audio data to generate accurate guitar tablature in real-time as the video plays.</p>
-                    <div class="feature-tag">Multi-Modal Fusion</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Fret Stabilization</h3>
-                    <p>Exponential moving average smoothing locks fret positions, preventing jitter and ensuring consistent detection.</p>
-                    <div class="feature-tag">Signal Smoothing</div>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔮</div>
-                    <h3>Gap Tracking</h3>
-                    <p>Intelligent gap analysis detects hidden/occluded frets by learning the expected spacing pattern across the neck.</p>
-                    <div class="feature-tag">Pattern Analysis</div>
-                </div>
-            </div>
-        </div>
-    </section>
+        <!-- Main Content Area - Three Column Layout -->
+        <div class="main-container">
 
-    <!-- Guitar Tuner Section -->
-    <section id="tuner" class="tuner-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>🎸 Browser Guitar Tuner</h2>
-                <p>Use your microphone to tune your guitar — powered by Web Audio API</p>
-            </div>
-            <div class="tuner-app">
-                <div class="tuner-display">
-                    <div class="tuner-note" id="tuner-note">--</div>
-                    <div class="tuner-frequency" id="tuner-frequency">-- Hz</div>
-                    <div class="tuner-meter">
-                        <div class="meter-labels">
-                            <span>♭ Flat</span>
-                            <span>In Tune</span>
-                            <span>Sharp ♯</span>
-                        </div>
-                        <div class="meter-bar">
-                            <div class="meter-center"></div>
-                            <div class="meter-needle" id="tuner-needle"></div>
-                        </div>
-                        <div class="cents-display" id="tuner-cents">0 cents</div>
+            <!-- LEFT COLUMN - Controls -->
+            <div class="column column-left">
+                <div class="panel-title">Guitar Detection System</div>
+                <div class="panel-subtitle">Video + Audio + Tab Generation</div>
+
+                <!-- Video File Section -->
+                <fieldset class="group-box">
+                    <legend>Video File</legend>
+                    <div class="field-row">
+                        <label class="field-label" id="path-label">No file selected</label>
                     </div>
-                    <div class="tuner-string-info" id="tuner-string-info">
-                        Press Start to begin tuning
+                    <div class="field-row center">
+                        <button class="btn" id="browse-btn" onclick="document.getElementById('video-input').click()">Browse...</button>
+                        <input type="file" id="video-input" accept="video/*" style="display:none">
                     </div>
-                </div>
-                <div class="tuner-controls">
-                    <button class="btn btn-primary tuner-btn" id="tuner-start">
-                        <span>🎤</span> Start Tuner
-                    </button>
-                    <button class="btn btn-secondary tuner-btn" id="tuner-stop" disabled>
-                        <span>⏹️</span> Stop
-                    </button>
-                </div>
-                <div class="tuner-strings">
-                    <h4>Standard Tuning Reference</h4>
-                    <div class="string-buttons">
-                        <button class="string-btn" data-freq="329.63" data-note="E4" data-string="1">
-                            <span class="string-num">1</span>
-                            <span class="string-note">E4</span>
-                            <span class="string-hz">329.6 Hz</span>
-                        </button>
-                        <button class="string-btn" data-freq="246.94" data-note="B3" data-string="2">
-                            <span class="string-num">2</span>
-                            <span class="string-note">B3</span>
-                            <span class="string-hz">246.9 Hz</span>
-                        </button>
-                        <button class="string-btn" data-freq="196.00" data-note="G3" data-string="3">
-                            <span class="string-num">3</span>
-                            <span class="string-note">G3</span>
-                            <span class="string-hz">196.0 Hz</span>
-                        </button>
-                        <button class="string-btn" data-freq="146.83" data-note="D3" data-string="4">
-                            <span class="string-num">4</span>
-                            <span class="string-note">D3</span>
-                            <span class="string-hz">146.8 Hz</span>
-                        </button>
-                        <button class="string-btn" data-freq="110.00" data-note="A2" data-string="5">
-                            <span class="string-num">5</span>
-                            <span class="string-note">A2</span>
-                            <span class="string-hz">110.0 Hz</span>
-                        </button>
-                        <button class="string-btn" data-freq="82.41" data-note="E2" data-string="6">
-                            <span class="string-num">6</span>
-                            <span class="string-note">E2</span>
-                            <span class="string-hz">82.4 Hz</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                </fieldset>
 
-    <!-- Demo Section -->
-    <section id="demo" class="demo-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Detection Pipeline</h2>
-                <p>See how the three-stage detection process works</p>
-            </div>
-            <div class="pipeline">
-                <div class="pipeline-step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Video Input</h3>
-                        <p>Upload a video of guitar playing or use a webcam feed. The system processes frames at up to 30 FPS.</p>
-                        <div class="step-visual">
-                            <div class="code-block">
-                                <code>cap = cv2.VideoCapture(video_path)</code>
-                                <code>frame = cap.read()</code>
-                                <code>process_frame = cv2.resize(frame, (640, 480))</code>
+                <!-- Output File Section -->
+                <fieldset class="group-box">
+                    <legend>Output File (Optional)</legend>
+                    <div class="field-row">
+                        <label class="field-label" id="output-label">No output file (display only)</label>
+                    </div>
+                    <div class="field-row center">
+                        <button class="btn" id="output-btn">Save As...</button>
+                    </div>
+                </fieldset>
+
+                <!-- Audio Preprocessing Section -->
+                <fieldset class="group-box">
+                    <legend>Audio Preprocessing</legend>
+                    <div class="field-row">
+                        <input type="checkbox" id="preprocess-check" checked>
+                        <label for="preprocess-check">Enable Audio Preprocessing (Demucs/Spleeter)</label>
+                    </div>
+                    <div class="field-row">
+                        <span class="hint-text">Removes background noise and vocals for better frequency detection. This will take a few minutes but greatly improves accuracy.</span>
+                    </div>
+                </fieldset>
+
+                <!-- Guitar Tuner Section -->
+                <fieldset class="group-box">
+                    <legend>Guitar Tuner</legend>
+                    <div class="tuner-display">
+                        <div class="tuner-note" id="tuner-note">--</div>
+                        <div class="tuner-freq" id="tuner-frequency">-- Hz</div>
+                        <div class="tuner-meter">
+                            <div class="meter-track">
+                                <div class="meter-center-mark"></div>
+                                <div class="meter-needle" id="tuner-needle"></div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="pipeline-arrow">→</div>
-                <div class="pipeline-step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>YOLO Detection</h3>
-                        <p>Custom YOLOv8 model detects frets, neck, and nut. Fret stabilizer smooths positions across frames.</p>
-                        <div class="step-visual">
-                            <div class="code-block">
-                                <code>model = YOLO("guitar_detector_best.pt")</code>
-                                <code>results = model.predict(frame, conf=0.5)</code>
-                                <code># Classes: fret, neck, nut</code>
+                            <div class="meter-labels">
+                                <span>Flat</span>
+                                <span>In Tune</span>
+                                <span>Sharp</span>
                             </div>
+                            <div class="tuner-cents" id="tuner-cents">0 cents</div>
+                        </div>
+                        <div class="tuner-status" id="tuner-string-info">Press Start to begin tuning</div>
+                    </div>
+                    <div class="field-row center tuner-buttons">
+                        <button class="btn" id="tuner-start">Start Tuner</button>
+                        <button class="btn" id="tuner-stop" disabled>Stop</button>
+                    </div>
+                    <div class="string-reference">
+                        <div class="field-row">
+                            <span class="hint-text">Standard Tuning Reference (click to play tone):</span>
+                        </div>
+                        <div class="string-grid">
+                            <button class="string-btn" data-freq="329.63" data-note="E4" data-string="1">1: E4 (329.6)</button>
+                            <button class="string-btn" data-freq="246.94" data-note="B3" data-string="2">2: B3 (246.9)</button>
+                            <button class="string-btn" data-freq="196.00" data-note="G3" data-string="3">3: G3 (196.0)</button>
+                            <button class="string-btn" data-freq="146.83" data-note="D3" data-string="4">4: D3 (146.8)</button>
+                            <button class="string-btn" data-freq="110.00" data-note="A2" data-string="5">5: A2 (110.0)</button>
+                            <button class="string-btn" data-freq="82.41" data-note="E2" data-string="6">6: E2 (82.4)</button>
                         </div>
                     </div>
+                </fieldset>
+
+                <!-- Start Detection -->
+                <div class="field-row center">
+                    <button class="btn btn-start" id="start-btn" disabled>Start Detection</button>
                 </div>
-                <div class="pipeline-arrow">→</div>
-                <div class="pipeline-step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Audio + Hand Fusion</h3>
-                        <p>FFT pitch detection combined with hand position tracking produces accurate note identification.</p>
-                        <div class="step-visual">
-                            <div class="code-block">
-                                <code>freq = analyze_audio_segment(audio, sr)</code>
-                                <code>frets = get_frets_from_hand(hand, frets)</code>
-                                <code>tab.add_note(time, string, fret)</code>
-                            </div>
-                        </div>
+
+                <!-- Status -->
+                <div class="status-bar-inline">
+                    <label id="status-label">Ready</label>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-container" id="progress-container" style="display:none">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+                    </div>
+                </div>
+
+                <div class="instructions">
+                    1. Select video &middot; 2. Start detection &middot; 3. Watch &amp; view tabs
+                </div>
+            </div>
+
+            <!-- MIDDLE COLUMN - Video Display -->
+            <div class="column column-middle">
+                <div class="panel-title">Video Preview</div>
+                <div class="video-frame">
+                    <div class="video-placeholder" id="video-display">
+                        No video playing<br><br>Select a video and start detection to see live preview
                     </div>
                 </div>
             </div>
 
-            <!-- Sample Tab Output -->
-            <div class="tab-demo">
-                <h3>Sample Tab Output</h3>
-                <div class="tab-output">
-                    <pre id="sample-tab">
-e|---0---2---3---0---2---0---3---0---2---0---|
-B|---1---3---0---1---3---1---0---1---3---1---|
-G|---0---2---0---0---2---0---0---0---2---0---|
-D|---2---0---0---2---0---2---0---2---0---2---|
-A|---3-------2---3-------3---2---3-------3---|
-E|-----------3-----------0---3-----------0---|</pre>
-                </div>
-            </div>
-        </div>
-    </section>
+            <!-- RIGHT COLUMN - Tab Display -->
+            <div class="column column-right">
+                <div class="panel-title">Guitar Tablature</div>
+                <div class="tab-frame">
+                    <textarea class="tab-text" id="tab-display" readonly>No tabs yet. Start detection to generate guitar tabs.
 
-    <!-- Tech Stack Section -->
-    <section id="tech" class="tech-section">
-        <div class="container">
-            <div class="section-header">
-                <h2>Technology Stack</h2>
-                <p>Built with modern ML and computer vision tools</p>
-            </div>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <div class="tech-icon">🧠</div>
-                    <h4>YOLOv8</h4>
-                    <p>Real-time object detection</p>
+Tabs will appear here in real-time as notes are detected!</textarea>
                 </div>
-                <div class="tech-card">
-                    <div class="tech-icon">👁️</div>
-                    <h4>OpenCV</h4>
-                    <p>Video processing & vision</p>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-icon">🤖</div>
-                    <h4>MediaPipe</h4>
-                    <p>Hand tracking & landmarks</p>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-icon">🔊</div>
-                    <h4>FFT Analysis</h4>
-                    <p>Pitch detection via scipy</p>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-icon">🎼</div>
-                    <h4>Demucs</h4>
-                    <p>Audio source separation</p>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-icon">🔥</div>
-                    <h4>PyTorch</h4>
-                    <p>Deep learning backend</p>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-icon">🐍</div>
-                    <h4>Python</h4>
-                    <p>Core application language</p>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-icon">🌐</div>
-                    <h4>Web Audio API</h4>
-                    <p>Browser-based tuner</p>
+                <div class="field-row center tab-controls">
+                    <button class="btn" id="save-tab-btn" disabled>Save Tab...</button>
+                    <button class="btn" id="clear-tab-btn" disabled>Clear</button>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Desktop App Section -->
-    <section class="desktop-section">
-        <div class="container">
-            <div class="desktop-card">
-                <div class="desktop-info">
-                    <h2>Full Desktop Application</h2>
-                    <p>
-                        The complete detection pipeline with YOLO model inference, hand tracking, 
-                        audio preprocessing, and real-time tab generation requires the desktop application.
-                    </p>
-                    <div class="desktop-features">
-                        <div class="desktop-feature">
-                            <span>✅</span> Real-time video processing with YOLOv8
-                        </div>
-                        <div class="desktop-feature">
-                            <span>✅</span> MediaPipe hand tracking on fretboard
-                        </div>
-                        <div class="desktop-feature">
-                            <span>✅</span> Demucs audio source separation
-                        </div>
-                        <div class="desktop-feature">
-                            <span>✅</span> Automatic guitar tablature export
-                        </div>
-                    </div>
-                    <div class="desktop-actions">
-                        <a href="https://github.com" class="btn btn-primary" target="_blank" rel="noopener">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                            View on GitHub
-                        </a>
-                        <div class="install-cmd">
-                            <code>git clone &amp;&amp; pip install -r requirements.txt &amp;&amp; python3 guitar_detector_gui.py</code>
-                        </div>
-                    </div>
-                </div>
-                <div class="desktop-preview">
-                    <div class="terminal-window">
-                        <div class="terminal-header">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                            <span class="terminal-title">guitar_detector_gui.py</span>
-                        </div>
-                        <div class="terminal-body">
-                            <div class="terminal-line"><span class="prompt">$</span> python3 guitar_detector_gui.py</div>
-                            <div class="terminal-line dim">[INFO] Loading model: guitar_detector_best.pt</div>
-                            <div class="terminal-line dim">[INFO] Model loaded successfully</div>
-                            <div class="terminal-line dim">[INFO] Hand detector initialized (2 hands)</div>
-                            <div class="terminal-line dim">[INFO] Video opened: 1800 frames at 30 FPS</div>
-                            <div class="terminal-line success">[DEBUG] Guitar neck detected at frame 12</div>
-                            <div class="terminal-line success">[DEBUG] Audio: 329.6Hz -> String 1, Fret 0</div>
-                            <div class="terminal-line highlight">[DEBUG] ✓ NOTE ADDED: 0.40s -> String 1, Fret 0</div>
-                            <div class="terminal-line highlight">[DEBUG] ✓ NOTE ADDED: 1.20s -> String 5, Fret 3</div>
-                            <div class="terminal-line dim">Processing: 450/1800 frames (25.0%)</div>
-                            <div class="terminal-line blink">█</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-brand">
-                    <span class="logo">🎸</span>
-                    <span>Fun Guitar</span>
-                </div>
-                <p>AI-powered guitar detection and tablature generation</p>
-                <div class="footer-links">
-                    <a href="#features">Features</a>
-                    <a href="#tuner">Tuner</a>
-                    <a href="#demo">Demo</a>
-                    <a href="#tech">Tech Stack</a>
-                </div>
-                <div class="footer-copy">
-                    Built with YOLOv8, OpenCV, MediaPipe & Web Audio API
-                </div>
-            </div>
+        <!-- Bottom Status Bar -->
+        <div class="window-statusbar">
+            <span id="window-status">Guitar Detection System v1.0</span>
         </div>
-    </footer>
+    </div>
 
     <script src="/tuner.js"></script>
     <script src="/app.js"></script>
