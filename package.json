@@ -1,0 +1,20 @@
+{
+  "name": "fun-guitar",
+  "version": "1.0.0",
+  "description": "AI-powered guitar detection and tablature generation - built with YOLOv8, OpenCV, and Web Audio API",
+  "private": true,
+  "scripts": {
+    "dev": "npx serve public -l 3000",
+    "start": "npx serve public -l 3000"
+  },
+  "keywords": [
+    "guitar",
+    "yolo",
+    "computer-vision",
+    "audio-analysis",
+    "tablature",
+    "pitch-detection",
+    "web-audio"
+  ],
+  "license": "MIT"
+}

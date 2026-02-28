@@ -1,4 +1,6 @@
-# Byte-compiled / optimized / DLL files
+# ======================
+# Python
+# ======================
 __pycache__/
 *.py[cod]
 *$py.class
@@ -10,6 +12,7 @@ __pycache__/
 venv/
 env/
 ENV/
+.venv/
 venv.bak/
 
 # Distribution / packaging
@@ -33,24 +36,38 @@ share/python-wheels/
 *.egg
 *.so
 
-# IDE
+# ======================
+# IDE / Editor
+# ======================
 .idea/
 .vscode/
 *.code-workspace
+*.swp
+*.swo
+*~
 
-# Jupyter Notebook
-.ipynb_checkpoints
-*.ipynb
+# ======================
+# OS Files
+# ======================
+.DS_Store
+Thumbs.db
+desktop.ini
 
-# Model files (too large for git)
+# ======================
+# ML Model Files (too large for git)
+# ======================
 *.pt
 *.weights
 *.h5
 *.onnx
 *.pb
+*.pth
+*.bin
 models/
 
-# Dataset directories
+# ======================
+# Dataset Directories
+# ======================
 Guitar*/
 guitar_neck_nut_yolo/
 guitar.v1i.yolov8/
@@ -62,13 +79,17 @@ fret_dataset/
 guitar_yolo/
 IDMT-SMT-GUITAR_V2/
 
-# Training runs and outputs
+# ======================
+# Training Runs & Outputs
+# ======================
 runs/
 train*/
 output/
 results/
 
-# Media files - Videos
+# ======================
+# Media Files (Videos)
+# ======================
 *.mp4
 *.avi
 *.mov
@@ -77,7 +98,9 @@ results/
 *.wmv
 *.webm
 
-# Media files - Images
+# ======================
+# Media Files (Images)
+# ======================
 *.jpg
 *.jpeg
 *.png
@@ -87,7 +110,9 @@ results/
 *.ico
 *.svg
 
-# Media files - Audio
+# ======================
+# Media Files (Audio)
+# ======================
 *.wav
 *.mp3
 *.flac
@@ -95,36 +120,63 @@ results/
 *.ogg
 *.m4a
 
-# Temporary files
+# ======================
+# Temporary & Log Files
+# ======================
 tmp/
 temp/
 *.tmp
 *.bak
-*.swp
-*.swo
-*~
-.DS_Store
-Thumbs.db
-
-# Log files
 *.log
 training_log.txt
 
-# Data files
+# ======================
+# Data & Notebooks
+# ======================
 guitar_fretboard_datas
+*.ipynb
+.ipynb_checkpoints
 
-# Training notebooks and extra docs
-train_guitar_colab.ipynb
+# ======================
+# Zip & Archive Files
+# ======================
+*.zip
+*.tar.gz
+*.rar
+
+# ======================
+# Vercel
+# ======================
+.vercel
+.env
+.env.local
+.env.production
+.env.development
+
+# ======================
+# Node (if any frontend tooling)
+# ======================
+node_modules/
+.next/
+.nuxt/
+
+# ======================
+# Extra docs (keep README.md only)
+# ======================
 ARCHITECTURE_DIAGRAM.md
 AUDIO_PREPROCESSING_README.md
 SUMMARY.md
 WORKFLOW_DIAGRAM.md
 
-# Dataset annotations
-*.coco
-
+# ======================
 # YOLO pretrained weights
+# ======================
 yolov8n.pt
 yolov3.weights
 yolov3.cfg
 coco.names
+
+# ======================
+# Dataset annotations
+# ======================
+*.coco
