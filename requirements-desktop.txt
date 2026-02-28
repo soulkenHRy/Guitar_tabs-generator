@@ -1,0 +1,26 @@
+# Core dependencies for guitar detection
+opencv-python>=4.8.0
+numpy>=1.24.0
+ultralytics>=8.0.0
+cvzone>=1.6.0
+librosa>=0.10.0
+soundfile>=0.12.0
+
+# GUI
+tk
+
+# Audio preprocessing (choose one or both)
+# Demucs (recommended - better quality, more modern)
+demucs>=4.0.0
+
+# Spleeter (alternative - faster but slightly lower quality)
+# spleeter>=2.3.0
+
+# Note: Both Demucs and Spleeter require:
+# - ffmpeg installed on your system
+# - torch and torchaudio for Demucs
+torch>=2.0.0
+torchaudio>=2.0.0
+
+# Additional dependencies
+Pillow>=10.0.0

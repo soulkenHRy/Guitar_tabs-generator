@@ -92,7 +92,7 @@ python3 -m venv venv
 source venv/bin/activate  # or venv\Scripts\activate on Windows
 
 # Install dependencies
-pip install -r requirements.txt
+pip install -r requirements-desktop.txt
 ```
 
 ### Run Desktop GUI
@@ -134,7 +134,8 @@ fun-guitar/
 ├── guitar_tuner.py              # Audio pitch detection module
 ├── audio_preprocessor.py        # Audio isolation (Demucs/Spleeter)
 ├── guitar_complete_detector.py  # Complete detection pipeline
-├── requirements.txt             # Python dependencies (desktop)
+├── requirements.txt             # Vercel API deps (empty - stdlib only)
+├── requirements-desktop.txt     # Python dependencies (desktop ML app)
 ├── vercel.json                  # Vercel deployment configuration
 ├── package.json                 # Project metadata
 └── .gitignore                   # Git ignore rules
